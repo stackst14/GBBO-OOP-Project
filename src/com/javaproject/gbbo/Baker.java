@@ -10,7 +10,6 @@ public class Baker {
         recipe = new Recipe(recipeName); // A recipe of Type Recipe for said baker. ** This could be change to an arrayList if there is more than one recipe in one episode. **
         this.bakerID = bakerIdef;
         this.bakerName = name;
-        System.out.println("inside baker constructor");
     }
     
     public void setBakerID(int bakerIdef){ //Change ID
@@ -34,5 +33,11 @@ public class Baker {
     
     public String getRecipe(){ //View recipe Name
         return this.recipe.getNameOfRecipe();
+    }
+    
+    public void showAllBakerInfo(){
+        System.out.println(this.bakerID);
+        System.out.println(this.bakerName);
+        System.out.println(this.recipe.getNameOfRecipe());
     }
 }
