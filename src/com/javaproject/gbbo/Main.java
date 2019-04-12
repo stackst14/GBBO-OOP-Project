@@ -1,20 +1,14 @@
 package com.javaproject.gbbo;
-import java.util.ArrayList;
-import java.util.Arrays;
+import java.io.IOException;
+//import java.util.ArrayList;
 
 public class Main {
 
-    public static void main(String[] args) {
-     
-        
-       //Episode EpisodeCreate = new Episode();
-       //EpisodeCreate.printEpisodeNumAndName();
-       
-       Season SeasonOne = new Season(1);
-       Season SeasonTwo = new Season(2);
-       
-        
-    
+    public static void main(String[] args) throws IOException {
+        DataHandler data = new DataHandler();
+        //data.showSeasonData();
+        data.modifySeason().setSeason(2);
+        System.out.println(data.modifySeason().getSeason());
+        //data.modifyBaker();
     }  
-    
 }

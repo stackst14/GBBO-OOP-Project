@@ -5,7 +5,6 @@ public class Recipe {
     
     public Recipe(String recipeName){ //constructor set the recipe name.
         this.nameOfRecipe = recipeName;
-        System.out.println("inside recipe constructor");
     }
     
     public void setNameOfRecipe(String recipeName){ //Change the recipe name 
