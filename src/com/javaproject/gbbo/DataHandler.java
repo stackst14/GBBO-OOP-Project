@@ -5,15 +5,16 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class DataHandler {
+public final class DataHandler {
     //private Scanner fileIn = null;
     private BufferedReader br;
     private final ArrayList<Baker> Bakers;
     private final ArrayList<Episode> Episodes;
-    private Season season;
+    private final ArrayList<Season> season;
     
     public DataHandler() throws IOException{
-        season = new Season();
+        //season = new Season();
+        season = new ArrayList<>();
         Bakers = new ArrayList<>();
         Episodes = new ArrayList<>();
         dataIntoClasses();
@@ -27,31 +28,39 @@ public class DataHandler {
             while( fileRead != null){
                 String [] tokenize = fileRead.split("#");
                 
-                int episodeNum = Integer.parseInt(tokenize[0]);
-                String episodeType = tokenize[1];
-                int chefID = Integer.parseInt(tokenize[2]);
+                int seasonNum = Integer.parseInt(tokenize[0]);
+                int episodeNum = Integer.parseInt(tokenize[1]);
+                String episodeType = tokenize[2];
                 String chefName = tokenize[3];
                 String recipe = tokenize[4];
-                Bakers.add(new Baker(chefID,chefName,recipe));
+                Bakers.add(new Baker(chefName,recipe));
                 Episodes.add(new Episode(episodeNum,episodeType));
+                season.add(new Season(seasonNum,Bakers,Episodes));
                
                 fileRead = br.readLine();
             }
             br.close();
-            season = new Season(1,10,Bakers,Episodes);
+            //season = new Season(1,10,Bakers,Episodes);
         }
         catch (FileNotFoundException e)
         {
             System.out.println("File not found.");
         }
     }
-    public void showSeasonData(){
-        season.showAllBakersInfo();
-        season.showEpisodeAndSeason();
+    public void displayAllSeasons(){
+        for(Season allSeasons: season){
+            System.out.println(allSeasons.getSeason());
+            allSeasons.showAllBakersInfo();
+            //allSeasons.showEpisodeAndSeason();
+        }
     }
-    public Season modifySeason(){
-        return this.season;
-    }
+//    public void showSeasonData(){
+//        season.showAllBakersInfo();
+//        season.showEpisodeAndSeason();
+//    }
+//    public Season modifySeason(){
+//        return this.season;
+//    }
 //    public void modifyBaker(int index){
 //        Bakers.get(index).setBakerID();
 //        Bakers.get(index).getBakerID();
