@@ -1,5 +1,4 @@
 package com.javaproject.gbbo;
-import java.util.ArrayList;
 
 public class Episode {
     private int episodeNumber;

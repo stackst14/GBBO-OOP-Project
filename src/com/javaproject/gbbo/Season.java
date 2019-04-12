@@ -7,6 +7,9 @@ public class Season {
     private int seasonNum; // The season number.
     private int numberOfBakers;
     
+    public Season(){
+        
+    }
     //Constructor that will create a Season with all the bakers
     public Season(int season,int numberOfBaker, ArrayList<Baker> allBakers, ArrayList<Episode> allEpisodes){
         this.seasonNum = season;
