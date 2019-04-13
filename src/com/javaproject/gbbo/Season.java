@@ -6,8 +6,7 @@ public class Season {
     private ArrayList<Episode> episode;
     private int seasonNum; // The season number.
     
-    public Season(){
-        
+    public Season(){   
     }
     //Constructor that will create a Season with all the bakers
     public Season(int season, ArrayList<Baker> allBakers, ArrayList<Episode> allEpisodes){
@@ -25,17 +24,36 @@ public class Season {
     public int getSeason(){// Get the current season
         return this.seasonNum;
     }
-    
-    public void showAllBakersInfo(){
+    public void showSeasonBelongs(){
+        System.out.println("Season: " + this.seasonNum);
+    }
+    public void showAllBakers(){
         for(Baker allbakers: bakers){
-            allbakers.showAllBakerInfo();
+            allbakers.showAllBakerName();
         }
     }
     
-    public void showEpisodeAndSeason(){
-        for(Episode allEpisodes: episode){
-            allEpisodes.showAllEpisodeInfo();
+    public void showAllBakerRecipes(){
+        for(Baker allbakers: bakers){
+            allbakers.showAllRecipeName();
         }
-        System.out.print(this.seasonNum);
+    }
+    
+//    public void showEpisodeAndSeason(){
+//        for(Episode allEpisodes: episode){
+//            allEpisodes.showAllEpisodeInfo();
+//            //System.out.print("Season:"+this.seasonNum);
+//        }
+//    }
+    public void showEpisode(){
+        for(Episode allEpisodes: episode){
+            allEpisodes.showAllEpisodeNum();
+        }
+    }
+    
+    public void showEpisodeDescription(){
+        for(Episode allEpisodes: episode){
+            allEpisodes.showAllEpisodeDescription();
+        }
     }
 }

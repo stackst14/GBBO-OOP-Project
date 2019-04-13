@@ -26,8 +26,11 @@ public class Baker {
         return this.recipe.getNameOfRecipe();
     }
     
-    public void showAllBakerInfo(){
-        System.out.println(this.bakerName);
-        System.out.println(this.recipe.getNameOfRecipe());
+    public void showAllBakerName(){
+        System.out.println("Baker:" + this.bakerName);
+    }
+    
+    public void showAllRecipeName(){
+        System.out.println("Recipe:" + this.recipe.getNameOfRecipe());
     }
 }

@@ -4,7 +4,7 @@ public class Episode {
     private int episodeNumber;
     private String typeOfEpisode;
     
-    public Episode (int episodeNumber, String typeOfEpi ){ // Constructor with episode Number and type of episode
+    public Episode (int episodeNumber, String typeOfEpi){ // Constructor with episode Number and type of episode
         this.episodeNumber = episodeNumber;
         this.typeOfEpisode = typeOfEpi;
     }
@@ -25,7 +25,15 @@ public class Episode {
     }
     
     public void showAllEpisodeInfo(){
-        System.out.println(this.episodeNumber);
-        System.out.println(this.typeOfEpisode);
+        System.out.println("Episode:" + this.episodeNumber);
+        System.out.println("Description:" + this.typeOfEpisode);
+    }
+    
+    public void showAllEpisodeNum(){
+        System.out.println("Episode:" + this.episodeNumber);
+    }
+    
+    public void showAllEpisodeDescription(){
+        System.out.println("Description:" + this.typeOfEpisode);
     }
 }

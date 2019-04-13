@@ -11,58 +11,119 @@ public final class DataHandler {
     private final ArrayList<Baker> Bakers;
     private final ArrayList<Episode> Episodes;
     private final ArrayList<Season> season;
+    //private int seasonNum;
     
     public DataHandler() throws IOException{
-        //season = new Season();
         season = new ArrayList<>();
         Bakers = new ArrayList<>();
         Episodes = new ArrayList<>();
         dataIntoClasses();
     }
+    
     public void dataIntoClasses() throws IOException{
         try
         {
             br = new BufferedReader(new FileReader("D:\\Fabian Hernandez\\Spring 2019 Semester\\CS 4332 Artificial Intelligence\\Projects\\Project1\\TSP_ProgramJava\\com.javaproject.gbbo\\src\\com\\javaproject\\gbbo\\GBBOInfo.txt"));
             
             String fileRead = br.readLine();
-            while( fileRead != null){
+            int seasonNum = 1;
+            while( fileRead != null ){
                 String [] tokenize = fileRead.split("#");
                 
-                int seasonNum = Integer.parseInt(tokenize[0]);
-                int episodeNum = Integer.parseInt(tokenize[1]);
-                String episodeType = tokenize[2];
-                String chefName = tokenize[3];
-                String recipe = tokenize[4];
-                Bakers.add(new Baker(chefName,recipe));
-                Episodes.add(new Episode(episodeNum,episodeType));
-                season.add(new Season(seasonNum,Bakers,Episodes));
-               
+               // seasonNum;
+                int episodeNum = Integer.parseInt(tokenize[0]);
+                String episodeType;
+                String bakerName;
+                String recipe;
+                switch (seasonNum){
+                case 1:
+                    System.out.println("Season 1");
+                    seasonNum = Integer.parseInt(tokenize[0]);
+                    episodeNum = Integer.parseInt(tokenize[1]);
+                    episodeType = tokenize[2];
+                    bakerName = tokenize[3];
+                    recipe = tokenize[4];
+                    Bakers.add(new Baker(bakerName,recipe));
+                    Episodes.add(new Episode(episodeNum,episodeType));
+                    break;
+                case 2:
+                    System.out.println("Season 2");
+                    seasonNum = Integer.parseInt(tokenize[0]);
+                    episodeNum = Integer.parseInt(tokenize[1]);
+                    episodeType = tokenize[2];
+                    bakerName = tokenize[3];
+                    recipe = tokenize[4];
+                    Bakers.add(new Baker(bakerName,recipe));
+                    Episodes.add(new Episode(episodeNum,episodeType));
+                    break;
+                }
                 fileRead = br.readLine();
             }
+            season.add(new Season(seasonNum,Bakers,Episodes));
             br.close();
-            //season = new Season(1,10,Bakers,Episodes);
         }
         catch (FileNotFoundException e)
         {
             System.out.println("File not found.");
         }
     }
-    public void displayAllSeasons(){
+    public void displaySeasonInfo(){
+//        switch (seasonNum){
+//            case 1:
+//                season.get(1).getSeason()
+//                displayAllBakersName();
+//                displayAllBakersRecipe();
+//                displayAllEpisode();
+//                displayAllEpisodeDescription();
+//                
+//            case 2:
+//                System.out.println("Season:1"+seasonNum);
+//                displayAllBakersName();
+//                displayAllBakersRecipe();
+//                displayAllEpisode();
+//                displayAllEpisodeDescription();
+//                break;
+//        }
+//        for(Season allSeasons: season){
+//            allSeasons.showSeasonBelongs();
+//        }
+    }
+    public void displaySeason(){
+        System.out.println(season.size());
+//        for(Season allSeasons: season){
+//            //allSeasons.
+//        }
+    }
+    public void displayAllEpisodes(){
         for(Season allSeasons: season){
-            System.out.println(allSeasons.getSeason());
-            allSeasons.showAllBakersInfo();
-            //allSeasons.showEpisodeAndSeason();
+            allSeasons.showEpisode();
         }
     }
-//    public void showSeasonData(){
-//        season.showAllBakersInfo();
-//        season.showEpisodeAndSeason();
-//    }
-//    public Season modifySeason(){
-//        return this.season;
-//    }
-//    public void modifyBaker(int index){
-//        Bakers.get(index).setBakerID();
-//        Bakers.get(index).getBakerID();
-//    }
+    
+    public void displayAllBakersName(){
+        for(Season allSeasons: season){
+             allSeasons.showAllBakers();
+        }
+    }
+    public void displayAllBakersRecipe(){
+        for(Season allSeasons: season){
+             allSeasons.showAllBakerRecipes();
+        }
+    }
+    
+    public void displayAllEpisode(){
+        for(Season allSeasons: season){
+             allSeasons.showEpisode();
+        }
+    }
+    
+    public void displayAllEpisodeDescription(){
+        for(Season allSeasons: season){
+             allSeasons.showEpisodeDescription();
+        }
+    }
+    public void modifyBakerInfo(int index, String newName, String newRecipe){
+        Bakers.get(index).setBakerName(newName);
+        Bakers.get(index).setRecipe(newRecipe);
+    }
 }
